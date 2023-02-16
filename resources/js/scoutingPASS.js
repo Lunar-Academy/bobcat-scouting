@@ -78,7 +78,7 @@ function addTimer(table, idx, name, data) {
     inp.classList.add("cycle");
   }
   inp.setAttribute("id", "input_" + data.code);
-  inp.setAttribute("type", "text");
+  inp.setAttribute("type", "number");
   if (enableGoogleSheets && data.hasOwnProperty('gsCol')) {
     inp.setAttribute("name", data.gsCol);
   } else {
@@ -89,6 +89,9 @@ function addTimer(table, idx, name, data) {
   inp.setAttribute("value", 0);
   inp.setAttribute("size", 7);
   inp.setAttribute("maxLength", 7);
+  inp.setAttribute("min", 0);
+  // inp.setAttribute("onchange", "checkzero;")
+inp.setAttribute("onchange", "checkzero();");
   cell.appendChild(inp);
 
   var button2 = document.createElement("input");
@@ -103,20 +106,20 @@ function addTimer(table, idx, name, data) {
   cell.appendChild(lineBreak);
 
   var button10 = document.createElement("input");
-  button10.setAttribute("id", "addone_" + data.code);
+  button10.setAttribute("id", "subtractone_" + data.code);
   button10.setAttribute("type", "button");
   button10.setAttribute("onclick", "subtractSecond(this.parentElement)");
   button10.setAttribute("value", "-1");
-  button10.setAttribute("class", "addone");
+  button10.setAttribute("class", "subtractone");
 
   cell.appendChild(button10);
 
   var button11 = document.createElement("input");
-  button11.setAttribute("id", "subone_" + data.code);
+  button11.setAttribute("id", "addone_" + data.code);
   button11.setAttribute("type", "button");
   button11.setAttribute("onclick", "addSecond(this.parentElement)");
   button11.setAttribute("value", "+1");
-  button11.setAttribute("class", "subtractone");
+  button11.setAttribute("class", "addone");
 
   cell.appendChild(button11);
 
@@ -189,6 +192,9 @@ function addCounter(table, idx, name, data) {
   var button1 = document.createElement("input");
   button1.setAttribute("type", "button");
   button1.setAttribute("onclick", "counter(this.parentElement, -1)");
+  if (data.hasOwnProperty('max')) {
+    button1.setAttribute("onclick", "counter(this.parentElement, -1, "+ data.max +");");
+  }
   button1.setAttribute("value", "-");
   cell2.appendChild(button1);
 
@@ -203,7 +209,7 @@ function addCounter(table, idx, name, data) {
   }
   if (data.hasOwnProperty('max')) {
     inp.setAttribute("max", data.max);
-    inp.setAttribute("onkeyup", "if(value<0) value=0; if(value>3) value=3;");
+    inp.setAttribute("onchange", "if(value<0) value=0; if(value>3) value=3;");
 
   }
   inp.setAttribute("min", 0);
@@ -1828,7 +1834,8 @@ function onTeamnameChange(event) {
  * @param {element} element the <div> tag element (parent to the value tag).
  * @param {number} step the amount to add to the value tag.
  */
-function counter(element, step) {
+function counter(element, step, max) {
+  max = max || '99999999999999';
   var ctr = element.getElementsByClassName("counter")[0];
   var result = parseInt(ctr.value) + step;
 
@@ -1836,11 +1843,21 @@ function counter(element, step) {
     result = 0;
   }
 
-  if (result >= 0 || ctr.hasAttribute('data-negative')) {
+  if (result >= 0 || ctr.hasAttribute('data-negative') || result<max) {
     ctr.value = result;
+  } else if (result>max) {
+    ctr.value = max;
   } else {
     ctr.value = 0;
   }
+
+}
+
+function countermax(max){
+  var ctr = element.getElementsByClassName("counter")[0];
+if (parseInt(ctr.value)>parseInt(max)) {
+ctr.value = max;
+}
 }
 
 function newCycle(event)
@@ -1904,8 +1921,9 @@ function subtractSecond(event) {
   let timerID = event.firstChild;
   let tId = getIdBase(timerID.id);
   let inp = document.getElementById("input" + tId)
+  if (inp.value > 0){
   inp.value = parseInt(inp.value)-1;
-
+  }
 }
 
 function timer(event) {

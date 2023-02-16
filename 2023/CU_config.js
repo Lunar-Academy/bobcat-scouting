@@ -4,7 +4,7 @@ var config_data = `
   "page_title": "",
   "checkboxAs": "10",
   "prematch": [
-    { "name": "Scouter Initials",
+    { "name": "Name",
       "code": "s",
       "type": "scouter",
       "size": 15,

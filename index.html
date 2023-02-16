@@ -113,10 +113,12 @@ $(".radio:visible").attr('class', 'radiolabel');
 $( ".checkbox:visible" ).wrap( "<label class='radioelement'></label>" );
 $(".checkbox:visible").attr('class', 'checkboxlabel');
 
-var $set = $('field').children();    
-for(var i=0, len = $set.length; i < len; i+=2){
-    $set.slice(i, i+1).wrapAll('<div class="test" />');
-}    
+
+
+// var $set = $('field').children();    
+// for(var i=0, len = $set.length; i < len; i+=2){
+//     $set.slice(i, i+1).wrapAll('<div class="test" />');
+// }    
 
 // $("label").next().addBack().wrapAll('<div id="newDiv"/>');
 
@@ -134,7 +136,19 @@ for(var i=0, len = $set.length; i < len; i+=2){
 //     $(this).next('p').andSelf().wrapAll('<div class="test"/>');
 // });
 
+
+
 });
+
+function checkzero(){
+var	inp=document.getElementById("input_dt").value
+console.log(inp);
+	if(inp<0){
+		inp1=document.getElementById("input_dt");
+		inp1.setAttribute("value", 0)
+		$('#input_dt').val('000000');
+	}
+}
 
 var intervalId = window.setInterval(function(){
 
