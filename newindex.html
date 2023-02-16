@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="resources/css/scoutingPASS.css">
+    <script src="2023/CU_config.js"></script>
+    <script src="resources/js/scoutingPASS.js"></script>
+    <script src="resources/js/easy.qrcode.min.js"></script>
+    <script src="resources/js/TBAInterface.js"></script>
+    <script src="resources/js/googleSheets.js"></script>
+
+</head>
+
+<body>
+
+<form id="scoutingForm">
+    <table id="prematch_table" style="font: Roboto">
+        <!-- ###PRE-MATCH-COMPONENTS###-->
+        </table>
+
+        
+</form>
+
+<!-- <script>
+
+document.addEventListener("touchstart", startTouch, false);
+// document.addEventListener("touchend", moveTouch, false);
+
+function startTouch(e) {
+  initialX = e.touches[0].screenX;
+};
+
+
+function addClickableImage(table, idx, name, data) {
+    var row = table.insertRow(idx);
+    var cell = row.insertCell(0);
+    cell.setAttribute("colspan", 2);
+    cell.setAttribute("style", "text-align: center;");
+    cell.classList.add("title");
+    if (!data.hasOwnProperty('code')) {
+      cell1.innerHTML = `Error: No code specified for ${name}`;
+      return idx + 1;
+    }
+    cell.innerHTML = name;
+    if (data.hasOwnProperty('tooltip')) {
+      cell.setAttribute("title", data.tooltip);
+    }
+  
+    let showFlip = true;
+    if (data.hasOwnProperty('showFlip')) {
+      if (data.showFlip.toLowerCase() == 'false') {
+        showFlip = false;
+      }
+    }
+  
+    let showUndo = true;
+    if (data.hasOwnProperty('showUndo')) {
+      if (data.showUndo.toLowerCase() == 'false') {
+        showUndo = false;
+      }
+    }
+  
+    if (showFlip || showUndo) {
+      idx += 1
+      row = table.insertRow(idx);
+      cell = row.insertCell(0);
+      cell.setAttribute("colspan", 2);
+      cell.setAttribute("style", "text-align: center;");
+  
+      if (showUndo) {
+        // Undo button
+        let undoButton = document.createElement("input");
+        undoButton.setAttribute("type", "button");
+        undoButton.setAttribute("onclick", "undo(this.parentElement)");
+        undoButton.setAttribute("value", "Undo");
+        undoButton.setAttribute("id", "undo_" + data.code);
+        undoButton.setAttribute("class", "undoButton");
+        cell.appendChild(undoButton);
+      }
+  
+      if (showFlip) {
+        // Flip button
+        let flipButton = document.createElement("input");
+        flipButton.setAttribute("type", "button");
+        flipButton.setAttribute("onclick", "flip(this.parentElement)");
+        flipButton.setAttribute("value", "Flip Image");
+        flipButton.setAttribute("id", "flip_" + data.code);
+        flipButton.setAttribute("class", "flipButton");
+        if (showUndo) {
+          flipButton.setAttribute("margin-left", '8px');
+        }
+        cell.appendChild(flipButton);
+      }
+    }
+  
+    idx += 1;
+    row = table.insertRow(idx);
+    cell = row.insertCell(0);
+    cell.setAttribute("colspan", 2);
+    cell.setAttribute("style", "text-align: center;");
+    var canvas = document.createElement('canvas');
+    //canvas.onclick = onFieldClick;
+    canvas.setAttribute("onclick", "onFieldClick(event)");
+    canvas.setAttribute("class", "field-image-src");
+    canvas.setAttribute("id", "canvas_" + data.code);
+    canvas.innerHTML = "No canvas support";
+    cell.appendChild(canvas);
+  
+    idx += 1;
+    row = table.insertRow(idx);
+    row.setAttribute("style", "display:none");
+    cell = row.insertCell(0);
+    cell.setAttribute("colspan", 2);
+    var inp = document.createElement('input');
+    inp.setAttribute("type", "hidden");
+    inp.setAttribute("id", "XY_" + data.code);
+    inp.setAttribute("value", "[]");
+    cell.appendChild(inp);
+    inp = document.createElement('input');
+    inp.setAttribute("hidden", "");
+    if (enableGoogleSheets && data.hasOwnProperty('gsCol')) {
+      inp.setAttribute("name", data.gsCol);
+    } else {
+      inp.setAttribute("name", data.code);
+    }
+    inp.setAttribute("id", "input_" + data.code);
+    inp.setAttribute("value", "[]");
+    inp.setAttribute("class", "clickableImage");
+   
+    cell.appendChild(inp);
+  
+    // TODO: Make these more efficient/elegant
+    inp = document.createElement('input');
+    inp.setAttribute("hidden", "");
+    inp.setAttribute("id", "clickRestriction_" + data.code);
+    inp.setAttribute("value", "none");
+    if (data.hasOwnProperty('clickRestriction')) {
+      if ((data.clickRestriction == "one") ||
+          (data.clickRestriction == "onePerBox")) {
+            inp.setAttribute("value", data.clickRestriction);
+      }
+    }
+    cell.appendChild(inp);
+  
+    inp = document.createElement('input');
+    inp.setAttribute("hidden", "");
+    inp.setAttribute("id", "dimensions_" + data.code);
+    inp.setAttribute("value", "12 6");
+    if (data.hasOwnProperty('dimensions')) {
+      if (data.dimensions != "") {
+        // TODO: Add validation for "X Y" format
+        inp.setAttribute("value", data.dimensions);
+      }
+    }
+    cell.appendChild(inp);
+  
+    inp = document.createElement('input');
+    inp.setAttribute("hidden", "");
+    inp.setAttribute("id", "shape_" + data.code);
+    // Default shape: white circle of size 5 not filled in
+    inp.setAttribute("value", "circle 5 white white true");
+    if (data.hasOwnProperty('shape')) {
+      if (data.shape != "") {
+        // TODO: Add validation for "shape size color fill" format
+        inp.setAttribute("value", data.shape);
+      }
+    }
+    cell.appendChild(inp);
+  
+    inp = document.createElement('input');
+    inp.setAttribute("hidden", "");
+    inp.setAttribute("id", "toggleClick_" + data.code);
+    inp.setAttribute("value", "false");
+    if (data.hasOwnProperty('toggleClick')) {
+      if (data.toggleClick != "") {
+        // TODO: Add validation for true/false format
+        inp.setAttribute("value", data.toggleClick);
+      }
+    }
+    cell.appendChild(inp);
+  
+    if (data.hasOwnProperty('cycleTimer')) {
+      if (data.cycleTimer != "") {
+        inp = document.createElement('input');
+        inp.setAttribute("hidden", "");
+        inp.setAttribute("id", "cycleTimer_" + data.code);
+        inp.setAttribute("value", data.cycleTimer);
+        cell.appendChild(inp);
+      }
+    }
+  
+    idx += 1
+    row = table.insertRow(idx);
+    row.setAttribute("style", "display:none");
+    cell = row.insertCell(0);
+    cell.setAttribute("colspan", 2);
+    var img = document.createElement('img');
+    img.src = data.filename;
+    img.setAttribute("id", "img_" + data.code);
+    img.setAttribute("class", "field-image-src");
+    img.setAttribute("onload", "drawFields()");
+    img.setAttribute("hidden", "");
+    cell.appendChild(img);
+  
+    return idx + 1
+  }
+
+
+  function addElement(table, idx, data) {
+  var type = null;
+  var name = 'Default Name';
+  if (data.hasOwnProperty('name')) {
+    name = data.name
+  }
+  if (data.hasOwnProperty('type')) {
+    type = data.type
+  } else {
+    console.log("No type specified");
+    console.log("Data: ")
+    console.log(data);
+    err = { code: "err", defaultValue: "No type specified: " + data };
+    idx = addText(table, idx, name, err);
+    return
+  }
+  if (type == 'counter') {
+    idx = addCounter(table, idx, name, data);
+  } else if ((data.type == 'scouter') ||
+    (data.type == 'event') ||
+    (data.type == 'text')
+  ) {
+    idx = addText(table, idx, name, data);
+  } else if ((data.type == 'level') ||
+    (data.type == 'radio') ||
+    (data.type == 'robot')
+  ) {
+    idx = addRadio(table, idx, name, data);
+  } else if ((data.type == 'match') ||
+    (data.type == 'team') ||
+    (data.type == 'number')
+  ) {
+    idx = addNumber(table, idx, name, data);
+  } else if ((data.type == 'field_image') ||
+  			 (data.type == 'clickable_image')) {
+    idx = addClickableImage(table, idx, name, data);
+  } else if ((data.type == 'bool') ||
+    (data.type == 'checkbox') ||
+    (data.type == 'pass_fail')
+  ) {
+    idx = addCheckbox(table, idx, name, data);
+  } else if (data.type == 'counter') {
+    idx = addCounter(table, idx, name, data);
+  } else if ((data.type == 'timer') ||
+	     (data.type == 'cycle')) {
+    idx = addTimer(table, idx, name, data);
+  } else {
+    console.log(`Unrecognized type: ${data.type}`);
+  }
+  return idx
+}
+
+function configure() {
+  try {
+    var mydata = JSON.parse(config_data);
+  } catch (err) {
+    console.log(`Error parsing configuration file`)
+    console.log(err.message)
+    console.log('Use a tool like http://jsonlint.com/ to help you debug your config file')
+    var table = document.getElementById("prematch_table")
+    var row = table.insertRow(0);
+    var cell1 = row.insertCell(0);
+    cell1.innerHTML = `Error parsing configuration file: ${err.message}<br><br>Use a tool like <a href="http://jsonlint.com/">http://jsonlint.com/</a> to help you debug your config file`
+    return -1
+  }
+
+  if (mydata.hasOwnProperty('title')) {
+    document.title = mydata.title;
+  }
+
+  if (mydata.hasOwnProperty('page_title')) {
+    var elements = document.getElementsByClassName("page_title");
+    for (var i = 0; i < elements.length; i++) {
+      elements[i].innerHTML = mydata.page_title;
+    }
+  }
+
+  if (mydata.hasOwnProperty('enable_google_sheets')) {
+    if ((mydata.enable_google_sheets == 'true') ||
+      (mydata.enable_google_sheets == 'True') ||
+      (mydata.enable_google_sheets == 'TRUE')) {
+      enableGoogleSheets = true;
+    }
+  }
+
+  if (mydata.hasOwnProperty('checkboxAs')) {
+    // Supported modes
+    // YN - Y or N
+    // TF - T or F
+    // 10 - 1 or 0
+    if ((mydata.checkboxAs == 'YN') ||
+      (mydata.checkboxAs == 'TF') ||
+      (mydata.checkboxAs == '10')) {
+      console.log("Setting checkboxAs to " + mydata.checkboxAs);
+      checkboxAs = mydata.checkboxAs;
+    } else {
+      console.log("unrecognized checkboxAs setting.  Defaulting to YN.")
+      checkboxAs = 'YN';
+    }
+  }
+  // Configure prematch screen
+  var pmc = mydata.prematch;
+  var pmt = document.getElementById("prematch_table");
+  var idx = 0;
+  pmc.forEach(element => {
+    idx = addElement(pmt, idx, element);
+  });
+}
+
+document.onload = configure();
+
+
+  </script> -->
+
+</body>
+</html>
