@@ -22,7 +22,9 @@ var options = {
 
 // Must be filled in: e=event, m=match#, l=level(q,qf,sf,f), t=team#, r=robot(r1,r2,b1..), s=scouter
 //var requiredFields = ["e", "m", "l", "t", "r", "s", "as"];
-var requiredFields = ["e", "m", "l", "r", "s", "as"];
+// var requiredFields = ["e", "m", "l", "r", "s", "as", "t"];
+var requiredFields = ["s", "e", "l", "m", "r", "t", "as"];
+
 
 function addTimer(table, idx, name, data) {
   var row = table.insertRow(idx);
@@ -87,11 +89,11 @@ function addTimer(table, idx, name, data) {
   inp.setAttribute("style", "background-color: black; color: white;border: none; text-align: center;");
   inp.setAttribute("disabled", "");
   inp.setAttribute("value", 0);
-  inp.setAttribute("size", 7);
-  inp.setAttribute("maxLength", 7);
+  // inp.setAttribute("size", 7);
+  // inp.setAttribute("maxLength", 7);
   inp.setAttribute("min", 0);
   // inp.setAttribute("onchange", "checkzero;")
-inp.setAttribute("onchange", "checkzero();");
+// inp.setAttribute("onchange", "checkzero();");
   cell.appendChild(inp);
 
   var button2 = document.createElement("input");
@@ -191,10 +193,9 @@ function addCounter(table, idx, name, data) {
 
   var button1 = document.createElement("input");
   button1.setAttribute("type", "button");
-  button1.setAttribute("onclick", "counter(this.parentElement, -1)");
-  if (data.hasOwnProperty('max')) {
-    button1.setAttribute("onclick", "counter(this.parentElement, -1, "+ data.max +");");
-  }
+  button1.setAttribute("onclick", "counter(this.parentElement, -1);");
+  button1.setAttribute("class", "subtract");
+
   button1.setAttribute("value", "-");
   cell2.appendChild(button1);
 
@@ -225,6 +226,8 @@ function addCounter(table, idx, name, data) {
   button2.setAttribute("type", "button");
   button2.setAttribute("onclick", "counter(this.parentElement, 1)");
   button2.setAttribute("value", "+");
+  button2.setAttribute("class", "add");
+
   cell2.appendChild(button2);
 
   if (data.hasOwnProperty('defaultValue')) {
@@ -493,6 +496,8 @@ function addNumber(table, idx, name, data) {
   if ((data.type == 'team') ||
     (data.type == 'match')) {
     inp.setAttribute("onchange", "updateMatchStart(event)");
+    inp.setAttribute("value", "");
+
   }
   if (data.hasOwnProperty('min')) {
     inp.setAttribute("min", data.min);
@@ -712,13 +717,14 @@ cell2.appendChild(tbl);
           keys.forEach(c => {
       
 
-         var button1 = document.createElement("input");
-         button1.setAttribute("type", "button");
-         button1.setAttribute("onclick", "counter(this.parentElement, -1)");
-         button1.setAttribute("value", "-");
-         button1.setAttribute("class", "subtract");
+            var button2 = document.createElement("input");
+            button2.setAttribute("type", "button");
+            button2.setAttribute("onclick", "counter(this.parentElement, 1)");
+            button2.setAttribute("value", "+");
+            button2.setAttribute("class", "add");
+            cell3.appendChild(button2);
 
-         cell3.appendChild(button1);
+
        
          var inp = document.createElement("input");
          inp.classList.add("counter");
@@ -743,12 +749,14 @@ cell2.appendChild(tbl);
          inp.setAttribute("maxLength", 2);
          cell3.appendChild(inp);
        
-         var button2 = document.createElement("input");
-         button2.setAttribute("type", "button");
-         button2.setAttribute("onclick", "counter(this.parentElement, 1)");
-         button2.setAttribute("value", "+");
-         button2.setAttribute("class", "add");
-         cell3.appendChild(button2);
+         var button1 = document.createElement("input");
+         button1.setAttribute("type", "button");
+         button1.setAttribute("onclick", "counter(this.parentElement, -1)");
+         button1.setAttribute("value", "-");
+         button1.setAttribute("class", "subtract");
+         
+
+         cell3.appendChild(button1);
        
          if (data.hasOwnProperty('defaultValue')) {
            var def = document.createElement("input");
@@ -770,13 +778,12 @@ cell2.appendChild(tbl);
        keys.forEach(c => {
    
 
-      var button1 = document.createElement("input");
-      button1.setAttribute("type", "button");
-      button1.setAttribute("onclick", "counter(this.parentElement, -1)");
-      button1.setAttribute("value", "-");
-      button1.setAttribute("class", "subtract");
-
-      cell3.appendChild(button1);
+        var button2 = document.createElement("input");
+        button2.setAttribute("type", "button");
+        button2.setAttribute("onclick", "counter(this.parentElement, 1)");
+        button2.setAttribute("value", "+");
+        button2.setAttribute("class", "add");
+        cell3.appendChild(button2);
     
       var inp = document.createElement("input");
       inp.classList.add("counter");
@@ -801,13 +808,16 @@ cell2.appendChild(tbl);
       inp.setAttribute("maxLength", 2);
       cell3.appendChild(inp);
     
-      var button2 = document.createElement("input");
-      button2.setAttribute("type", "button");
-      button2.setAttribute("onclick", "counter(this.parentElement, 1)");
-      button2.setAttribute("value", "+");
-      button2.setAttribute("class", "add");
-      cell3.appendChild(button2);
+
     
+      var button1 = document.createElement("input");
+      button1.setAttribute("type", "button");
+      button1.setAttribute("onclick", "counter(this.parentElement, -1)");
+      button1.setAttribute("value", "-");
+      button1.setAttribute("class", "subtract");
+
+      cell3.appendChild(button1);
+
       if (data.hasOwnProperty('defaultValue')) {
         var def = document.createElement("input");
         def.setAttribute("id", "default_" + data.code)
@@ -827,15 +837,14 @@ cell2.appendChild(tbl);
     keys = Object.keys(data.midcone);
     keys.forEach(c => {
 
+      var button2 = document.createElement("input");
+      button2.setAttribute("type", "button");
+      button2.setAttribute("onclick", "counter(this.parentElement, 1)");
+      button2.setAttribute("value", "+");
+      button2.setAttribute("class", "add");
+      cell3.appendChild(button2);
+    
 
-   var button1 = document.createElement("input");
-   button1.setAttribute("type", "button");
-   button1.setAttribute("onclick", "counter(this.parentElement, -1)");
-   button1.setAttribute("value", "-");
-   button1.setAttribute("class", "subtract");
-
-   cell3.appendChild(button1);
- 
    var inp = document.createElement("input");
    inp.classList.add("counter");
    inp.setAttribute("id", "input_" + data.code);
@@ -859,13 +868,16 @@ cell2.appendChild(tbl);
    inp.setAttribute("maxLength", 2);
    cell3.appendChild(inp);
  
-   var button2 = document.createElement("input");
-   button2.setAttribute("type", "button");
-   button2.setAttribute("onclick", "counter(this.parentElement, 1)");
-   button2.setAttribute("value", "+");
-   button2.setAttribute("class", "add");
-   cell3.appendChild(button2);
+
+   var button1 = document.createElement("input");
+   button1.setAttribute("type", "button");
+   button1.setAttribute("onclick", "counter(this.parentElement, -1)");
+   button1.setAttribute("value", "-");
+   button1.setAttribute("class", "subtract");
+
+   cell3.appendChild(button1);
  
+
    if (data.hasOwnProperty('defaultValue')) {
      var def = document.createElement("input");
      def.setAttribute("id", "default_" + data.code)
@@ -886,14 +898,14 @@ if (data.hasOwnProperty('midcube')) {
  keys.forEach(c => {
 
 
-var button1 = document.createElement("input");
-button1.setAttribute("type", "button");
-button1.setAttribute("onclick", "counter(this.parentElement, -1)");
-button1.setAttribute("value", "-");
-button1.setAttribute("class", "subtract");
-
-cell3.appendChild(button1);
-
+  var button2 = document.createElement("input");
+  button2.setAttribute("type", "button");
+  button2.setAttribute("onclick", "counter(this.parentElement, 1)");
+  button2.setAttribute("value", "+");
+  button2.setAttribute("class", "add");
+  cell3.appendChild(button2);
+  
+  
 var inp = document.createElement("input");
 inp.classList.add("counter");
 inp.setAttribute("id", "input_" + data.code);
@@ -917,12 +929,14 @@ inp.setAttribute("size", 2);
 inp.setAttribute("maxLength", 2);
 cell3.appendChild(inp);
 
-var button2 = document.createElement("input");
-button2.setAttribute("type", "button");
-button2.setAttribute("onclick", "counter(this.parentElement, 1)");
-button2.setAttribute("value", "+");
-button2.setAttribute("class", "add");
-cell3.appendChild(button2);
+var button1 = document.createElement("input");
+button1.setAttribute("type", "button");
+button1.setAttribute("onclick", "counter(this.parentElement, -1)");
+button1.setAttribute("value", "-");
+button1.setAttribute("class", "subtract");
+
+cell3.appendChild(button1);
+
 
 if (data.hasOwnProperty('defaultValue')) {
   var def = document.createElement("input");
@@ -944,14 +958,13 @@ if (data.hasOwnProperty('highcone')) {
  keys.forEach(c => {
 
 
-var button1 = document.createElement("input");
-button1.setAttribute("type", "button");
-button1.setAttribute("onclick", "counter(this.parentElement, -1)");
-button1.setAttribute("value", "-");
-button1.setAttribute("class", "subtract");
-
-cell3.appendChild(button1);
-
+  var button2 = document.createElement("input");
+  button2.setAttribute("type", "button");
+  button2.setAttribute("onclick", "counter(this.parentElement, 1)");
+  button2.setAttribute("value", "+");
+  button2.setAttribute("class", "add");
+  cell3.appendChild(button2);
+  
 var inp = document.createElement("input");
 inp.classList.add("counter");
 inp.setAttribute("id", "input_" + data.code);
@@ -975,12 +988,15 @@ inp.setAttribute("size", 2);
 inp.setAttribute("maxLength", 2);
 cell3.appendChild(inp);
 
-var button2 = document.createElement("input");
-button2.setAttribute("type", "button");
-button2.setAttribute("onclick", "counter(this.parentElement, 1)");
-button2.setAttribute("value", "+");
-button2.setAttribute("class", "add");
-cell3.appendChild(button2);
+
+var button1 = document.createElement("input");
+button1.setAttribute("type", "button");
+button1.setAttribute("onclick", "counter(this.parentElement, -1)");
+button1.setAttribute("value", "-");
+button1.setAttribute("class", "subtract");
+
+cell3.appendChild(button1);
+
 
 if (data.hasOwnProperty('defaultValue')) {
   var def = document.createElement("input");
@@ -1001,14 +1017,13 @@ if (data.hasOwnProperty('highcube')) {
  keys = Object.keys(data.highcube);
  keys.forEach(c => {
 
+  var button2 = document.createElement("input");
+button2.setAttribute("type", "button");
+button2.setAttribute("onclick", "counter(this.parentElement, 1)");
+button2.setAttribute("value", "+");
+button2.setAttribute("class", "add");
+cell3.appendChild(button2);
 
-var button1 = document.createElement("input");
-button1.setAttribute("type", "button");
-button1.setAttribute("onclick", "counter(this.parentElement, -1)");
-button1.setAttribute("value", "-");
-button1.setAttribute("class", "subtract");
-
-cell3.appendChild(button1);
 
 var inp = document.createElement("input");
 inp.classList.add("counter");
@@ -1033,12 +1048,16 @@ inp.setAttribute("size", 2);
 inp.setAttribute("maxLength", 2);
 cell3.appendChild(inp);
 
-var button2 = document.createElement("input");
-button2.setAttribute("type", "button");
-button2.setAttribute("onclick", "counter(this.parentElement, 1)");
-button2.setAttribute("value", "+");
-button2.setAttribute("class", "add");
-cell3.appendChild(button2);
+
+
+var button1 = document.createElement("input");
+button1.setAttribute("type", "button");
+button1.setAttribute("onclick", "counter(this.parentElement, -1)");
+button1.setAttribute("value", "-");
+button1.setAttribute("class", "subtract");
+
+cell3.appendChild(button1);
+
 
 if (data.hasOwnProperty('defaultValue')) {
   var def = document.createElement("input");
@@ -1323,14 +1342,42 @@ function validateData() {
     // Robot requires special (radio) validation
     if (rf == "r") {
       if (!validateRobot()) {
-        errStr += rf + " "
+        errStr += "Robot" + " "
         ret = false
       }
     } else if (rf == "l") {
       if (!validateLevel()) {
-        errStr += rf + " "
+        errStr += "Match Level" + " "
         ret = false
+      } 
+      
+    }else if (rf == "s") {
+        if (document.getElementById("input_" + rf).value == "") {
+          errStr += "Name" + " "
+          ret = false
+        } 
       }
+      else if (rf == "m") {
+        if (document.getElementById("input_" + rf).value == "[]") {
+          errStr += "Match Number" + " "
+          ret = false
+        } }
+          
+       else if (rf == "t") {
+        if (isNaN(document.getElementById("input_" + rf).value) || document.getElementById("input_" + rf).value == "[]" || document.getElementById("input_" + rf).value == "" || document.getElementById("input_" + rf).value == " "|| parseInt(document.getElementById("input_" +rf).value)<1 || parseInt(document.getElementById("input_" +rf).value)>9999) {
+          errStr += "Team Number" + " "
+          ret = false
+        } }
+
+        else if (rf == "as") {
+          if (document.getElementById("input_" + rf).value == "[]") {
+            errStr += "Auto Start Position" + " "
+            ret = false
+          } 
+              
+            
+        
+
       // Normal validation (length <> 0)
     } else if (document.getElementById("input_" + rf).value == "[]") {
         errStr += rf + " ";
@@ -1834,8 +1881,7 @@ function onTeamnameChange(event) {
  * @param {element} element the <div> tag element (parent to the value tag).
  * @param {number} step the amount to add to the value tag.
  */
-function counter(element, step, max) {
-  max = max || '99999999999999';
+function counter(element, step) {
   var ctr = element.getElementsByClassName("counter")[0];
   var result = parseInt(ctr.value) + step;
 
@@ -1843,22 +1889,20 @@ function counter(element, step, max) {
     result = 0;
   }
 
-  if (result >= 0 || ctr.hasAttribute('data-negative') || result<max) {
-    ctr.value = result;
-  } else if (result>max) {
-    ctr.value = max;
-  } else {
+  if (result >= 0 || ctr.hasAttribute('data-negative')) {
+    ctr.value = result;}
+  else {
     ctr.value = 0;
   }
 
 }
 
-function countermax(max){
-  var ctr = element.getElementsByClassName("counter")[0];
-if (parseInt(ctr.value)>parseInt(max)) {
-ctr.value = max;
-}
-}
+// function countermax(max){
+//   var ctr = element.getElementsByClassName("counter")[0];
+// if (parseInt(ctr.value)>parseInt(max)) {
+// ctr.value = max;
+// }
+// }
 
 function newCycle(event)
 {
