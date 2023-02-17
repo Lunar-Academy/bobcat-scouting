@@ -148,19 +148,14 @@ var config_data = `
         "e": "Engaged<br>",
         "d": "Docked (Not Engaged)",
         "p": "Parked",
-        "n": "None"
+        "x": "Did not attempt docking"
       },
-      "defaultValue": "n"
+      "defaultValue": "x"
     },
-    { "name": "Final Status",
+    { "name": "Attempted docking but failed",
     "code": "fsd",
-    "type":"radio",
-    "choices": {
-      "a": "Attempted docking but failed",
-      "x": "Did not attempt docking"
-    },
-    "defaultValue": "x"
-    },
+    "type":"bool"
+     },
 
     { "name": "Total # of alliance robots docked/engaged",
       "code": "dn",
