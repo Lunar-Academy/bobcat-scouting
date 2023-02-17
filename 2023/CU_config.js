@@ -122,15 +122,15 @@ var config_data = `
       "code": "wd",
       "type": "bool"
     },
-    { "name": "Picked up cones from floor (tipped)",
+    { "name": "Picked up <strong>cones</strong> from <strong>floor (tipped)</strong>",
     "code": "pcf",
     "type": "bool"
     },
-    { "name": "Picked up cones from floor (upright)",
+    { "name": "Picked up <strong>cones</strong> from <strong>floor (upright)</strong>",
     "code": "pcu",
     "type": "bool"
     },
-    { "name": "Picked up cubes from floor",
+    { "name": "Picked up <strong>cubes</strong> from <strong>floor</strong>",
     "code": "pcuu",
     "type": "bool"
     }
@@ -148,11 +148,20 @@ var config_data = `
         "e": "Engaged<br>",
         "d": "Docked (Not Engaged)",
         "p": "Parked",
-        "a": "Attempted docking but failed",
-        "x": "Not attempted"
+        "n": "None"
       },
-      "defaultValue": "x"
+      "defaultValue": "n"
     },
+    { "name": "Final Status",
+    "code": "fsd",
+    "type":"radio",
+    "choices": {
+      "a": "Attempted docking but failed",
+      "x": "Did not attempt docking"
+    },
+    "defaultValue": "x"
+    },
+
     { "name": "Total # of alliance robots docked/engaged",
       "code": "dn",
       "type": "counter",
