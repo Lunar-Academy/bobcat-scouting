@@ -86,7 +86,7 @@ var config_data = `
       "choices": {
         "e": "Engaged<br>", 
         "d": "Docked (not Engaged)<br>",
-        "a": "Attempted but failed<br>",
+        "a": "Attempted docking but failed<br>",
         "x": "Not attempted"
       },
       "defaultValue": "x"
@@ -122,7 +122,7 @@ var config_data = `
       "code": "wd",
       "type": "bool"
     },
-    { "name": "Picked up cones from floor (side)",
+    { "name": "Picked up cones from floor (tipped)",
     "code": "pcf",
     "type": "bool"
     },
@@ -148,7 +148,7 @@ var config_data = `
         "e": "Engaged<br>",
         "d": "Docked (Not Engaged)",
         "p": "Parked",
-        "a": "Attempted but failed",
+        "a": "Attempted docking but failed",
         "x": "Not attempted"
       },
       "defaultValue": "x"
@@ -176,11 +176,11 @@ var config_data = `
       "code": "dr",
       "type": "radio",
       "choices": {
-        "b": "Below Average<br>",
-        "a": "Average<br>",
-        "g": "Good<br>",
-        "e": "Excellent<br>",
-        "x": "Did not play defense"
+        "x": "Did not play defense",
+        "b": "Below Average",
+        "a": "Average",
+        "g": "Good",
+        "e": "Excellent"
       },
       "defaultValue": "x"
     },

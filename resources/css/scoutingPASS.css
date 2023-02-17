@@ -109,6 +109,10 @@ input::-webkit-inner-spin-button {
     border-color: black;
 }
 
+#auton_table{
+    text-align:left;
+}
+
 label {
     background: #2e2e2e;
     color:lightgray;
@@ -462,7 +466,11 @@ width: 15px;
 }
 
 #input1_fs{
-    width: 321px;
+    width: 334px;
+}
+
+#input1_ad{
+    width: 334px;
 }
 
 .break {
