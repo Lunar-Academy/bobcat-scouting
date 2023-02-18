@@ -40,12 +40,12 @@ var config_data = `
       "code": "r",
       "type": "robot",
       "choices": {
-        "r1": "Red-1",
-        "b1": "Blue-1<br>",
-        "r2": "Red-2",
+        "b1": "Blue-1",
         "b2": "Blue-2<br>",
-        "r3": "Red-3",
-        "b3": "Blue-3"
+        "b3": "Blue-3",
+        "r1": "Red-1<br>",
+        "r2": "Red-2",
+        "r3": "Red-3"
       },
       "required":"true"
     },
@@ -85,8 +85,8 @@ var config_data = `
       "type":"radio",
       "choices": {
         "e": "Engaged<br>", 
-        "d": "Docked (not Engaged)<br>",
-        "a": "Attempted docking but failed<br>",
+        "d": "Only Docked",
+        "a": "Failed Attempt",
         "x": "Not attempted"
       },
       "defaultValue": "x"
@@ -94,7 +94,7 @@ var config_data = `
   ],
   "teleop": [
    
-    { "name": "Teleop Scoring",
+    { "name": " ",
       "code": "tsg",
       "type": "array",
 			"lowcone": {
@@ -146,13 +146,13 @@ var config_data = `
       "type":"radio",
       "choices": {
         "e": "Engaged<br>",
-        "d": "Docked (Not Engaged)",
+        "d": "Only Docked",
         "p": "Parked",
-        "x": "Did not attempt docking"
+        "x": "Did not Attempt"
       },
       "defaultValue": "x"
     },
-    { "name": "Attempted docking but failed",
+    { "name": "Failed attempt at docking",
     "code": "fsd",
     "type":"bool"
      },
@@ -180,7 +180,7 @@ var config_data = `
       "code": "dr",
       "type": "radio",
       "choices": {
-        "x": "Did not play defense",
+        "x": "Not Defense",
         "b": "Below Average",
         "a": "Average",
         "g": "Good",

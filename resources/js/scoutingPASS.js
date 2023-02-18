@@ -294,11 +294,11 @@ function addClickableImage(table, idx, name, data) {
       let flipButton = document.createElement("input");
       flipButton.setAttribute("type", "button");
       flipButton.setAttribute("onclick", "flip(this.parentElement)");
-      flipButton.setAttribute("value", "Flip Image");
+      flipButton.setAttribute("value", "Flip");
       flipButton.setAttribute("id", "flip_" + data.code);
       flipButton.setAttribute("class", "flipButton");
       if (showUndo) {
-        flipButton.setAttribute("margin-left", '8px');
+        flipButton.setAttribute("width", '10%');
       }
       cell.appendChild(flipButton);
     }
@@ -689,8 +689,8 @@ function addArray(table, idx, name, data) {
 
 
 tbl = document.createElement('table');
-tbl.style.width = '300px';
-tbl.style.border = '1px solid black';
+tbl.style.width = '280px';
+tbl.style.border = '1px solid white';
 
 tbl.setAttribute("id", "teleopscoring")
 
@@ -1373,7 +1373,9 @@ function validateData() {
           if (document.getElementById("input_" + rf).value == "[]") {
             errStr += "Auto Start Position" + " "
             ret = false
+            
           } 
+    
               
             
         
