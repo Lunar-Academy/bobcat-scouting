@@ -134,10 +134,10 @@ label {
         margin-right:500em;   
     } */
 
-label:hover {
+/* label:hover {
     background:darkgray;   
     color:#2e2e2e;
-}
+} */
 
 /* label:checked{
     background:blue;   
@@ -504,9 +504,17 @@ input[type="checkbox"]{
 
 textarea {
 
-    height: 200px;
+    height: 150px;
     width: 100%;
 
+}
+
+.comments p{
+    margin-bottom:6px;
+}
+
+.postmatch_table, endgame_table{
+    font-size: 1.5rem;
 }
 
 h1{
@@ -634,7 +642,8 @@ input {
 .title {
     width: "50%";
     text-align: center;
-    padding-right:2em;
+    padding-right:0.5em;
+    padding-left:0.2em;
 }
 
 
@@ -645,6 +654,15 @@ input {
     display: flex;
     align-items: left;
     flex-flow: wrap;
+    color: white;
+}
+
+.title{
+    color:white;
+}
+
+#auto_table .title{
+width: 15px;
 }
 
 #endgame_table.title{
@@ -669,14 +687,19 @@ width:15px;
     width: 100%;
   }
 
+
+
 .field p{
 display: block;
 padding:0;
 margin-top:.375em;
 margin-right: auto;
-font-size: 1.25em;
+font-size: 1.01em;
 }
 
+#teleop .field p{
+    /* font-size: 0.9rem; */
+}
 
 #qr-table {
     text-align: center;

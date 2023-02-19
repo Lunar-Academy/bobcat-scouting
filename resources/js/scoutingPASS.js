@@ -1206,7 +1206,7 @@ function configure() {
       checkboxAs = mydata.checkboxAs;
     } else {
       console.log("unrecognized checkboxAs setting.  Defaulting to YN.")
-      checkboxAs = 'YN';
+      checkboxAs = '10';
     }
   }
 
@@ -2043,7 +2043,7 @@ function copyData(){
 }
 
 window.onload = function () {
-  var ret = configure();
+  var ret = /*configure()*/1;
   if (ret != -1) {
     var ec = document.getElementById("input_e").value;
     getTeams(ec);
