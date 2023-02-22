@@ -106,6 +106,10 @@ input::-webkit-inner-spin-button {
     background-color: var(--bobcatmaroon);
 }
 
+#teleop_table{
+font-size: 0.8rem;
+}
+
 #auton_table{
     text-align:left;
 }
