@@ -98,12 +98,15 @@ input::-webkit-inner-spin-button {
 #auton_table, #endgame_table, #teleop_table {
     font-family : -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
     color: white;
-    font-size: 1rem;
     font-style: bold;
     letter-spacing: 1px;
     border-width: 4px;
     border-color: white;
     background-color: var(--bobcatmaroon);
+}
+
+#auton_table, #endgame_table{
+    font-size: 1rem;
 }
 
 #teleop_table{
