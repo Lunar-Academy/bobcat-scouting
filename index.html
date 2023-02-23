@@ -30,7 +30,7 @@
                      </tr>
                      <tr>
                         <td class="title">Event&nbsp;</td>
-                        <td class="field"><input id="input_e" type="text" onchange="replaceSemicolon(this.value)" name="e" value="2022carv" required="" disabled=""><input id="default_e" type="hidden" value="2022carv" onchange="replaceSemicolon(this.value)"></td>
+                        <td class="field"><input id="input_e" type="text" onchange="replaceSemicolon(this.value)" name="e" value="2022carv" required="" readonly=""><input id="default_e" type="hidden" value="2022carv" onchange="replaceSemicolon(this.value)"></td>
                      </tr>
                      <tr>
                         <td class="title">Match Level&nbsp;</td>
@@ -168,18 +168,18 @@
                                  </tr>
                                  <tr>
                                     <td style="border: 3px solid white; color: white;">High</td>
-                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
-                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
+                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" readonly="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
+                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" readonly="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
                                  </tr>
                                  <tr>
                                     <td style="border: 3px solid white; color: white;">Mid</td>
-                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
-                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
+                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" readonly="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
+                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" readonly="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
                                  </tr>
                                  <tr>
                                     <td style="border: 3px solid white; color: white;">Low</td>
-                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
-                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
+                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" readonly="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
+                                    <td style="border: 3px solid white; color: white;"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"><input class="counter" id="input_tsg" type="number" name="tsg" min="0" style="background-color: black; color: white;border: none; text-align: center;" readonly="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, -1)" value="-" class="subtract"></td>
                                  </tr>
                               </tbody>
                            </table>
@@ -216,7 +216,7 @@
                         <td colspan="2" style="text-align: center;" class="title">Docking Timer</td>
                      </tr>
                      <tr>
-                        <td colspan="2" style="text-align: center;"><input id="start_dt" type="button" onclick="timer(this.parentElement)" value="Start" class="start"><input class="timer" id="input_dt" type="number" name="dt" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" min="0"><input id="clear_dt" type="button" onclick="resetTimer(this.parentElement)" value="Reset" class="reset"><br><input id="subtractone_dt" type="button" onclick="subtractSecond(this.parentElement)" value="-1" class="subtractone"><input id="addone_dt" type="button" onclick="addSecond(this.parentElement)" value="+1" class="addone"></td>
+                        <td colspan="2" style="text-align: center;"><input id="start_dt" type="button" onclick="timer(this.parentElement)" value="Start" class="start"><input class="timer" id="input_dt" type="number" name="dt" style="background-color: black; color: white;border: none; text-align: center;" readonly="" value="0" min="0"><input id="clear_dt" type="button" onclick="resetTimer(this.parentElement)" value="Reset" class="reset"><br><input id="subtractone_dt" type="button" onclick="subtractSecond(this.parentElement)" value="-1" class="subtractone"><input id="addone_dt" type="button" onclick="addSecond(this.parentElement)" value="+1" class="addone"></td>
                      </tr>
                      <tr style="display:none">
                         <td colspan="2" style="text-align: center;"><input type="hidden" id="status_dt" value="stopped"><input id="intervalId_dt" value="" hidden=""></td>
@@ -245,7 +245,7 @@
                      </tr>
                      <tr>
                         <td class="title">Total # of alliance robots docked/engaged&nbsp;</td>
-                        <td class="field"><input type="button" onclick="counter(this.parentElement, -1);" class="subtract" value="-"><input class="counter" id="input_dn" type="number" name="dn" max="3" onchange="if(value<0) value=0; if(value>3) value=3;" min="0" style="background-color: black; color: white;border: none; text-align: center;" disabled="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"></td>
+                        <td class="field"><input type="button" onclick="counter(this.parentElement, -1);" class="subtract" value="-"><input class="counter" id="input_dn" type="number" name="dn" max="3" onchange="if(value<0) value=0; if(value>3) value=3;" min="0" style="background-color: black; color: white;border: none; text-align: center;" readonly="" value="0" size="2" maxlength="2"><input type="button" onclick="counter(this.parentElement, 1)" value="+" class="add"></td>
                      </tr>
                   </tbody>
                </table>
