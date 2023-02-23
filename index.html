@@ -363,21 +363,19 @@
                </div>
                <div id="clearButton">
                   <!-- <button type="button" class="clearForm" onclick="clearForm()">Clear Form</button> -->
-                  <button type="button" class="clearForm" data-bs-toggle="modal" data-bs-target="#clearModal">Clear Form</button>
+                  <button type="button" class="clearForm" data-bs-toggle="modal" data-bs-target="#clearModal" onclick="modal()">Clear Form</button>
 
 
 
                </div>
                <br>
             </div>
-         </div>
-
 <!-- Modal -->
 <div class="modal fade" id="clearModal" tabindex="-1" aria-labelledby="clearModalLabel" aria-hidden="true">
    <div class="modal-dialog">
      <div class="modal-content">
        <div class="modal-header">
-         <h5 class="modal-title" id="exampleModalLabel">Clear Form</h5>
+         <h5 class="modal-title" id="clearModalLabel">Clear Form</h5>
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
@@ -391,8 +389,19 @@
    </div>
  </div>
 
+         </div>
+
+         <script>
+             function modal(){
+                 $('#clearModal').modal('show') 
+             }
+         </script>
+
       </form>
       <script>
+         
+
+         
          $(window).bind("load", function () {
          
          $( ".radio:visible" ).wrap( "<label class='radiolabel'></label>" );
