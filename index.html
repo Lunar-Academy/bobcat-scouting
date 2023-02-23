@@ -382,7 +382,7 @@
          Are you sure you want to clear the form?
        </div>
        <div class="modal-footer">
-         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="dismissmodal()">Close</button>
          <button type="button" class="btn btn-danger" onclick="clearForm(); dismissmodal()" data-bs-dismiss="modal">Yes</button>
        </div>
      </div>
@@ -396,7 +396,7 @@
                  $('#clearModal').modal('show') 
              }
              function dismissmodal(){
-                 $('#clearModal').modal('dismiss') 
+                 $('#clearModal').modal('hide') 
              }
 
          </script>
