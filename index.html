@@ -383,7 +383,7 @@
        </div>
        <div class="modal-footer">
          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-         <button type="button" class="btn btn-danger" onclick="clearForm()" data-bs-dismiss="modal">Yes</button>
+         <button type="button" class="btn btn-danger" onclick="clearForm(); dismissmodal()" data-bs-dismiss="modal">Yes</button>
        </div>
      </div>
    </div>
@@ -395,6 +395,10 @@
              function modal(){
                  $('#clearModal').modal('show') 
              }
+             function dismissmodal(){
+                 $('#clearModal').modal('dismiss') 
+             }
+
          </script>
 
       </form>
