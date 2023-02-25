@@ -1544,6 +1544,9 @@ function clearForm() {
       continue;
     }
 
+    document.getElementById("input_co").value="";
+
+
     radio = code.indexOf("_")
     if (radio > -1) {
       var baseCode = code.substr(0, radio)
