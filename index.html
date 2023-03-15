@@ -207,6 +207,15 @@
                      <tr>
                         <!-- <td class="comments" colspan="2"><p>Comments</p><div class="break"></div><textarea class="comment"onchange="replaceSemicolon(this.value)" value=""></textarea></td> -->
                      </tr>
+                     <tr>
+                        <td colspan="2" style="text-align: center;" class="title">Docking Timer</td>
+                     </tr>
+                     <tr>
+                        <td colspan="2" style="text-align: center;"><input id="start_dt" type="button" onclick="timer(this.parentElement)" value="Start" class="start"><input class="timer" id="input_dt" type="number" name="dt" style="background-color: black; color: white;border: none; text-align: center;" readonly="" value="0" min="0"><input id="clear_dt" type="button" onclick="resetTimer(this.parentElement)" value="Reset" class="reset"><br><input id="subtractone_dt" type="button" onclick="subtractSecond(this.parentElement)" value="-1" class="subtractone"><input id="addone_dt" type="button" onclick="addSecond(this.parentElement)" value="+1" class="addone"></td>
+                     </tr>
+                     <tr style="display:none">
+                        <td colspan="2" style="text-align: center;"><input type="hidden" id="status_dt" value="stopped"><input id="intervalId_dt" value="" hidden=""></td>
+                     </tr>
                   </tbody>
                </table>
                <p class="match-label"><input type="button" value="Prev" id="prevButton4" onclick="swipePage(-1)"> <input type="button" value="Next" id="nextButton6" onclick="swipePage(1)"></p>
@@ -218,15 +227,7 @@
                <table id="endgame_table">
                   <!-- ###ENDGAME-COMPONENTS###-->
                   <tbody>
-                     <tr>
-                        <td colspan="2" style="text-align: center;" class="title">Docking Timer</td>
-                     </tr>
-                     <tr>
-                        <td colspan="2" style="text-align: center;"><input id="start_dt" type="button" onclick="timer(this.parentElement)" value="Start" class="start"><input class="timer" id="input_dt" type="number" name="dt" style="background-color: black; color: white;border: none; text-align: center;" readonly="" value="0" min="0"><input id="clear_dt" type="button" onclick="resetTimer(this.parentElement)" value="Reset" class="reset"><br><input id="subtractone_dt" type="button" onclick="subtractSecond(this.parentElement)" value="-1" class="subtractone"><input id="addone_dt" type="button" onclick="addSecond(this.parentElement)" value="+1" class="addone"></td>
-                     </tr>
-                     <tr style="display:none">
-                        <td colspan="2" style="text-align: center;"><input type="hidden" id="status_dt" value="stopped"><input id="intervalId_dt" value="" hidden=""></td>
-                     </tr>
+
                      <tr>
                         <td class="title">Final Status&nbsp;</td>
                         <td id="input1_fs" class="field">
