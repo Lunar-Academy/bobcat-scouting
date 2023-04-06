@@ -1491,7 +1491,7 @@ function qr_regenerate() {
   // Validate required pre-match date (event, match, level, robot, scouter)
   if (validateData() == false) {
     // Don't allow a swipe until all required data is filled in
-    return false
+    return true
   }
 
   // Get data
