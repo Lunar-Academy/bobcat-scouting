@@ -1329,7 +1329,9 @@ function getLevel() {
 function validateLevel() {
   if (document.getElementById("input_l_qm").checked ||
     document.getElementById("input_l_de").checked ||
-    document.getElementById("input_l_f").checked
+    document.getElementById("input_l_f").checked ||
+        document.getElementById("input_l_p").checked
+
   ) {
     return true
   } else {
