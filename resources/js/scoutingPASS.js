@@ -1319,6 +1319,8 @@ function getLevel() {
     return "de";
   } else if (document.getElementById("input_l_f").checked) {
     return "f";
+  } else if (document.getElementById("input_l_p").checked) {
+    return "p";
   } else {
     return "";
   }
